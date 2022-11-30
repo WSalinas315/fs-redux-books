@@ -10,13 +10,15 @@ import * as serviceWorker from './serviceWorker';
 
 const bookList = (state = [], action) => {
   // TODO - set book list with data from server
+  if(action.type === 'SET_BOOKS'){
+    console.log('In SET_BOOKS from bookList reducer.', action.payload);
+    return action.payload;
+  }
   return state;
 }
 
 const reduxStore = createStore(
-  combineReducers({
-    bookList
-  }),
+  combineReducers({bookList}),
   applyMiddleware(logger)
 );
 
